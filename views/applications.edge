@@ -1,0 +1,70 @@
+@layout('layouts.app')
+
+@section('content')
+<!-- Page Header -->
+<header class="masthead" style="background-image: url('{{ posts.image }}')">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-heading">
+                    <h1>{{ posts.title }}</h1>
+                    <span class="meta">Posted by
+                        <a href="#">{{ posts.author.Companyname }}</a>
+                        on {{ posts.createdAt.toDateString() }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+
+
+
+<div class="container">
+        <h1>Applied Candiates for {{posts.title}}</h1> 
+<br>
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Names
+            </th>
+            <th>
+                Mobile Number
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Skills
+            </th>
+            <th>
+                Experience
+            </th>
+            <th>
+                Resume
+            </th>
+            <th>
+                Aadhaar
+            </th>
+
+        </tr>
+        @each(post in posts.Applicants)
+        <tr>
+            <td>{{post.username}}</td>
+            <td>{{post.phoneNumber}}</td>
+            <td>{{post.email}}</td>
+            <td>{{post.skills}}</td>
+            <td>{{post.experience}}</td>
+            <td><a href="{{post.resume}}" target="_blank">view</a></td>
+            <td><a href="{{post.aadhar}}" target="_blank">View</a></td>
+        </tr>
+
+        @endeach
+    </table>
+</div>
+
+
+<hr>
+@endsection
